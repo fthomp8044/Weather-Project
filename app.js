@@ -15,7 +15,7 @@ app.get("/", function(req, res){
         name: "Freddy",
         favouriteFood: "Ramen"
       }
-      //packs data back in a string form
+      //packs object data back in a string form
       console.log(JSON.stringify(object));
     });
   })
