@@ -11,12 +11,12 @@ app.get("/", function(req, res){
     response.on("data", function(data){
       //parse unpacks data into a json object format
       const weatherData = JSON.parse(data)
-      const object = {
-        name: "Freddy",
-        favouriteFood: "Ramen"
-      }
-      //packs object data back in a string form
-      console.log(JSON.stringify(object));
+
+      const temp = weatherData.main.temp
+      console.log(temp);
+      
+      const descrip = weatherData.weather[0].description
+      console.log(descrip);
     });
   })
   res.send("server up and running!");
