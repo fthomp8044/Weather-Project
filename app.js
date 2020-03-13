@@ -11,15 +11,18 @@ app.get("/", function(req, res){
     response.on("data", function(data){
       //parse unpacks data into a json object format
       const weatherData = JSON.parse(data)
-
       const temp = weatherData.main.temp
-      console.log(temp);
-      
-      const descrip = weatherData.weather[0].description
-      console.log(descrip);
-    });
+      const weatherDescription = weatherData.weather[0].description
+      const icon = weatherData.weather[0].icon
+      const imageURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
+      //sending info back to the browservvv
+      res.write("<p>The weather is currently " + weatherDescription + "</p>");
+      res.write("<h1>The temperature in Greenville is " + temp + " degrees Celcius</h1>");
+      res.write("<img src=" + imageURL +">");
+      res.send()
+
+    })
   })
-  res.send("server up and running!");
 });
 
 
